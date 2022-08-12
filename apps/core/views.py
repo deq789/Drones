@@ -43,3 +43,8 @@ class MedicationCheckAPIView(APIView):
         medications = Medication.objects.filter(drone=drone_serial_number)
         serializer = MedicationSerializer(medications, many=True)
         return Response(serializer.data, status=200)
+
+
+class DroneCheckAvailableAPIView(ListAPIView):
+    serializer_class = DroneSerializer
+    queryset = Drone.objects.filter(state='IDLE')
