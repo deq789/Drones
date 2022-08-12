@@ -48,3 +48,8 @@ class MedicationCheckAPIView(APIView):
 class DroneCheckAvailableAPIView(ListAPIView):
     serializer_class = DroneSerializer
     queryset = Drone.objects.filter(state='IDLE')
+
+
+class DroneDetailPIView(RetrieveAPIView):
+    serializer_class = DroneSerializer
+    queryset = Drone.objects.all()
