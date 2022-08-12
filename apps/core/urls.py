@@ -1,13 +1,10 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from .views import StatusAPIView, DroneRegisterAPIView, MedicationLoadAPIView, \
-    MedicationCheckAPIView, DroneCheckAvailableAPIView, DroneDetailPIView
+    MedicationCheckAPIView, DroneDetailPIView
 
 urlpatterns = [
-    path('drones/register', DroneRegisterAPIView.as_view()),
+    path('drones/', DroneRegisterAPIView.as_view()),
+    path('drones/<pk>/', DroneDetailPIView.as_view()),
     path('drones/load-medication', MedicationLoadAPIView.as_view()),
-    path('drones/check-medication/<str:drone_serial_number>',
-         MedicationCheckAPIView.as_view()),
-    path('drones/check-available', DroneCheckAvailableAPIView.as_view()),
-    path('drones/<pk>', DroneDetailPIView.as_view()),
+    path('drones/check-medication/<pk>/', MedicationCheckAPIView.as_view())
 ]

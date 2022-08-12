@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
+from django_filters import rest_framework as filters
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
 from apps.core.models import Drone, Medication
 from .serializers import DroneSerializer, MedicationSerializer
 from .utils import can_load_medication_weight, add_drone_to_medications
@@ -11,9 +12,18 @@ class StatusAPIView(APIView):
         return Response({'status': 'working'})
 
 
-class DroneRegisterAPIView(CreateAPIView):
-    serializer_class = DroneSerializer
+class DroneRegisterAPIView(ListCreateAPIView):
     queryset = Drone.objects.all()
+    serializer_class = DroneSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('state',)
+
+    def get_queryset(self):
+        state = self.request.query_params.get("state")
+        queryset = Drone.objects.all()
+        if state is not None:
+            queryset = queryset.filter(state=state)
+        return queryset
 
 
 class MedicationLoadAPIView(APIView):
@@ -35,19 +45,14 @@ class MedicationLoadAPIView(APIView):
 
 
 class MedicationCheckAPIView(APIView):
-    def get(self, request, drone_serial_number):
+    def get(self, request, pk):
         try:
-            Drone.objects.get(serial_number=drone_serial_number)
+            Drone.objects.get(serial_number=pk)
         except Drone.DoesNotExist:
-            return Response({'Drone': f'Drone with serial number {drone_serial_number} does not exist'}, status=404)
-        medications = Medication.objects.filter(drone=drone_serial_number)
+            return Response({'Drone': f'Drone with serial number {pk} does not exist'}, status=404)
+        medications = Medication.objects.filter(drone=pk)
         serializer = MedicationSerializer(medications, many=True)
         return Response(serializer.data, status=200)
-
-
-class DroneCheckAvailableAPIView(ListAPIView):
-    serializer_class = DroneSerializer
-    queryset = Drone.objects.filter(state='IDLE')
 
 
 class DroneDetailPIView(RetrieveAPIView):
