@@ -8,7 +8,6 @@ WAIT_TIME_TO_CHECK = 60
 
 
 class DroneBatteryThread(Thread):
-
     def run(self):
         from .models import Drone
         while True:

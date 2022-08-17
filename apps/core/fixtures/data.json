@@ -1,0 +1,138 @@
+[
+  {
+    "model": "core.drone",
+    "pk": "serial-number-1",
+    "fields": {
+      "model": "Lightweight",
+      "weight_limit": 100,
+      "battery_percentage": 40,
+      "state": "IDLE"
+    }
+  },
+  {
+    "model": "core.drone",
+    "pk": "serial-number-2",
+    "fields": {
+      "model": "Middleweight",
+      "weight_limit": 500,
+      "battery_percentage": 15,
+      "state": "LOADING"
+    }
+  },
+  {
+    "model": "core.drone",
+    "pk": "serial-number-3",
+    "fields": {
+      "model": "Cruiserweight",
+      "weight_limit": 470,
+      "battery_percentage": 38,
+      "state": "LOADED"
+    }
+  },
+  {
+    "model": "core.drone",
+    "pk": "serial-number-4",
+    "fields": {
+      "model": "Heavyweight",
+      "weight_limit": 187,
+      "battery_percentage": 100,
+      "state": "DELIVERING"
+    }
+  },
+  {
+    "model": "core.drone",
+    "pk": "serial-number-5",
+    "fields": {
+      "model": "Middleweight",
+      "weight_limit": 440,
+      "battery_percentage": 91,
+      "state": "DELIVERED"
+    }
+  },
+  {
+    "model": "core.drone",
+    "pk": "serial-number-6",
+    "fields": {
+      "model": "Middleweight",
+      "weight_limit": 78,
+      "battery_percentage": 12,
+      "state": "DELIVERED"
+    }
+  },
+  {
+    "model": "core.drone",
+    "pk": "serial-number-7",
+    "fields": {
+      "model": "Middleweight",
+      "weight_limit": 340,
+      "battery_percentage": 74,
+      "state": "RETURNING"
+    }
+  },
+
+  {
+    "model": "core.medication",
+    "pk": 1,
+    "fields": {
+      "drone": "serial-number-1",
+      "name": "Vitamin_B12",
+      "weight": 47,
+      "code": "VITB12",
+      "image": "RETURNING"
+    }
+  },
+  {
+    "model": "core.medication",
+    "pk": 1,
+    "fields": {
+      "drone": "serial-number-1",
+      "name": "Vitamin_B12",
+      "weight": 47,
+      "code": "VITB12",
+      "image": "RETURNING"
+    }
+  },
+  {
+    "model": "core.medication",
+    "pk": 1,
+    "fields": {
+      "drone": "serial-number-1",
+      "name": "Vitamin_B12",
+      "weight": 70,
+      "code": "VITB12"
+    }
+  },
+  {
+    "model": "core.medication",
+    "pk": 2,
+    "fields": {
+      "drone": "serial-number-4",
+      "name": "Aspirin",
+      "weight": 47,
+      "code": "ASPIRIN"
+    }
+  },
+  {
+    "model": "core.medication",
+    "pk": 3,
+    "fields": {
+      "drone": "serial-number-7",
+      "name": "Omega_suplement",
+      "weight": 140,
+      "code": "OMEGA_S"
+    }
+  },
+  {
+    "model": "core.medication",
+    "pk": 4,
+    "fields": {
+      "drone": "serial-number-7",
+      "name": "Omega_plus",
+      "weight": 154,
+      "code": "OMEGA_P"
+    }
+  }
+
+  
+
+]
