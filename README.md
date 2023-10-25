@@ -1,2 +1,2 @@
 # Drones
-Musala Soft Practical Task
+Django Practical Task
