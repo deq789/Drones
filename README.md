@@ -1,8 +1,8 @@
 # Drones
-Musala Soft Practical Task
+Django Practical Task
 
 ## Requirements 
-* You should have Python installed (test with version 3.7.2). 
+* You should have Python installed (tested with version 3.7.2). 
 
 ## Install 
 Clone this repo, create and activate virtual env:
